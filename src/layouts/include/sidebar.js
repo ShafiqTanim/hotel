@@ -42,8 +42,8 @@ function Sidebar() {
 								<li>
                                     <Link to={"/booking"} className={`${isLinkActive("/booking")}`}>All Booking </Link>
                                 </li>
-								<li><a href="edit-booking.html"> Edit Booking </a></li>
-								<li><a href="add-booking.html"> Add Booking </a></li>
+								<li><Link to={"/booking/add"} className={`${isLinkActive("/booking/add")}`}>Add Booking </Link></li>
+								{/* <li><a href="add-booking.html"> Add Booking </a></li> */}
 							</ul>
 						</li>
 						<li className="submenu" onClick={activeMenu}>
