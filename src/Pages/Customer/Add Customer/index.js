@@ -4,7 +4,7 @@ import AdminLayout from '../../../layouts/AdminLayout';
 import axios from "axios";
 
 
-function AddBooking() {
+function AddCustomer() {
   return (
     <div className="App">
         <AdminLayout>
@@ -13,7 +13,7 @@ function AddBooking() {
                     <div class="page-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="page-title mt-5">Add or Edit Booking</h3>
+                                <h3 class="page-title mt-5">Add or Edit Customer</h3>
                             </div>
                         </div>
                     </div>
@@ -135,4 +135,4 @@ function AddBooking() {
   )
 }
 
-export default AddBooking
+export default AddCustomer

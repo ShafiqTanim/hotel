@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 
@@ -7,7 +7,9 @@ import Booking from './Pages/Booking';
 import AddBooking from './Pages/Booking/Add Booking';
 import Dashboard from './Pages/Dashboard';
 import Customer from './Pages/Customer';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddCustomer from './Pages/Customer/Add Customer';
+import Rooms from './Pages/Rooms';
+import AddRooms from './Pages/Rooms/Add Rooms';
 //import Protected from './components/protected';
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/booking/add" element={<AddBooking />} />
           <Route path="/customer" element={<Customer />} />
+          <Route path="/customer/add" element={<AddCustomer />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms/add" element={<AddRooms />} />
         </Routes>
       </BrowserRouter>
   );

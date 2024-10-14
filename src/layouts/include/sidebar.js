@@ -49,16 +49,20 @@ function Sidebar() {
 						<li className="submenu" onClick={activeMenu}>
                             <a href="#"><i className="fas fa-user"></i> <span> Customers </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class  d-none">
-								<li><a href="all-customer.html"> All customers </a></li>
-								<li><a href="edit-customer.html"> Edit Customer </a></li>
-								<li><a href="add-customer.html"> Add Customer </a></li>
+								<li>
+									<Link to={"/customer"} className={`${isLinkActive("/customer")}`}>All Customer </Link>
+								</li>
+								<li><Link to={"/customer/add"} className={`${isLinkActive("/customer/add")}`}>Add Customer </Link></li>
+								{/* <li><a href="add-customer.html"> Add Customer </a></li> */}
 							</ul>
 						</li>
 						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-key"></i> <span> Rooms </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
-								<li><a href="all-rooms.html">All Rooms </a></li>
-								<li><a href="edit-room.html"> Edit Rooms </a></li>
-								<li><a href="add-room.html"> Add Rooms </a></li>
+								<li>
+									<Link to={"/rooms"} className={`${isLinkActive("/rooms")}`}>All Rooms </Link>
+								</li>
+								<li><Link to={"/rooms/add"} className={`${isLinkActive("/rooms/add")}`}> Add Rooms </Link></li>
+								{/* <li><a href="add-room.html"> Add Rooms </a></li> */}
 							</ul>
 						</li>
 						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Staff </span> <span className="menu-arrow"></span></a>
