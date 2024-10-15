@@ -13,7 +13,7 @@ function AddCustomer() {
                     <div class="page-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="page-title mt-5">Add or Edit Customer</h3>
+                                <h3 class="page-title mt-5">Add Customer</h3>
                             </div>
                         </div>
                     </div>

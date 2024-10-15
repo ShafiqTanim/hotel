@@ -20,7 +20,7 @@ function Sidebar() {
         return location.pathname == path ? 'active' : "";
     }
 
-  return (
+  	return (
         <div className="sidebar" id="sidebar">
 			<div className="sidebar-inner slimscroll">
 				<div id="sidebar-menu" className="sidebar-menu">
@@ -67,9 +67,11 @@ function Sidebar() {
 						</li>
 						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Staff </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
-								<li><a href="all-staff.html">All Staff </a></li>
+								<li>
+									<Link to={"/staff"} className={`${isLinkActive("/staff")}`}>All Staff </Link>
+								</li>
 								<li><a href="edit-staff.html"> Edit Staff </a></li>
-								<li><a href="add-staff.html"> Add Staff </a></li>
+								{/* <li><a href="add-staff.html"> Add Staff </a></li> */}
 							</ul>
 						</li>
 						<li> <a href="pricing.html"><i className="far fa-money-bill-alt"></i> <span>Pricing</span></a> </li>
@@ -164,7 +166,7 @@ function Sidebar() {
 				</div>
 			</div>
 		</div>
-  )
+  	)
 }
 
 export default Sidebar

@@ -10,6 +10,7 @@ import Customer from './Pages/Customer';
 import AddCustomer from './Pages/Customer/Add Customer';
 import Rooms from './Pages/Rooms';
 import AddRooms from './Pages/Rooms/Add Rooms';
+import Staff from './Pages/Staff';
 //import Protected from './components/protected';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/customer/add" element={<AddCustomer />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/add" element={<AddRooms />} />
+          <Route path="/staff" element={<Staff />} />
         </Routes>
       </BrowserRouter>
   );
