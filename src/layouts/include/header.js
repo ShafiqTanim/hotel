@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets_admin/css/bootstrap.min.css';
 import '../assets_admin/plugins/fontawesome/css/fontawesome.min.css';
 import '../assets_admin/plugins/fontawesome/css/all.min.css';
@@ -7,6 +7,30 @@ import '../assets_admin/plugins/morris/morris.css';
 import '../assets_admin/css/style.css';
 
 function Header() {
+	const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+	const [ncl, setncl] = useState('');
+	const [nclstyle, setnclstyle] = useState('');
+	const [isNotificationDropdownOpen, setIsNotificationDropdownOpen] = useState(false);
+  
+	const toggleUserDropdown = () => {
+	  if(isUserDropdownOpen){
+		setIsUserDropdownOpen(false);
+		setncl('show')
+		setnclstyle('showStyle')
+	  }else{
+		setIsUserDropdownOpen(true)
+		setncl('')
+		setnclstyle('')
+	  }
+	  // Close notification dropdown when user dropdown is opened
+	  if (isNotificationDropdownOpen) setIsNotificationDropdownOpen(false);
+	};
+  
+	const toggleNotificationDropdown = () => {
+	  setIsNotificationDropdownOpen(!isNotificationDropdownOpen);
+	  // Close user dropdown when notification dropdown is opened
+	  if (isUserDropdownOpen) setIsUserDropdownOpen(false);
+	};
     return (
 		<div className="header">
 			<div className="header-left">
@@ -17,7 +41,7 @@ function Header() {
 			<a className="mobile_btn" id="mobile_btn"> <i className="fas fa-bars"></i> </a>
 			<ul className="nav user-menu">
 				<li className="nav-item dropdown noti-dropdown">
-					<a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown"> <i className="fe fe-bell"></i> <span className="badge badge-pill">3</span> </a>
+					<a href="#" className="dropdown-toggle nav-link" onClick={toggleNotificationDropdown} data-toggle="dropdown"> <i className="fe fe-bell"></i> <span className="badge badge-pill">3</span> </a>
 					<div className="dropdown-menu notifications">
 						<div className="topnav-dropdown-header"> <span className="notification-title">Notifications</span> <a href="javascript:void(0)" className="clear-noti"> Clear All </a> </div>
 						<div className="noti-content">
@@ -39,9 +63,9 @@ function Header() {
 						<div className="topnav-dropdown-footer"> <a href="#">View all Notifications</a> </div>
 					</div>
 				</li>
-				<li className="nav-item dropdown has-arrow">
-					<a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown"> <span className="user-img"><img className="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Soeng Souy"/></span> </a>
-					<div className="dropdown-menu">
+				<li className={`nav-item dropdown has-arrow ${ncl}`}>
+					<a href="#" className="dropdown-toggle nav-link" onClick={toggleUserDropdown}> <span className="user-img"><img className="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Soeng Souy"/></span> </a>
+					<div className={`dropdown-menu ${ncl}  ${nclstyle}`}>
 						<div className="user-header">
 							<div className="avatar avatar-sm"> <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" className="avatar-img rounded-circle"/> </div>
 							<div className="user-text">

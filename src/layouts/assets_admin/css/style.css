@@ -5,3 +5,7 @@
 .sidebar-inner{
     overflow: auto;
 }
+
+.showStyle{
+    position: absolute; transform: translate3d(-106px, 60px, 0px); top: 0px; left: 0px; will-change: transform;
+}
