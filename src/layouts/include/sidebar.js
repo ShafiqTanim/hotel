@@ -70,13 +70,13 @@ function Sidebar() {
 								<li>
 									<Link to={"/staff"} className={`${isLinkActive("/staff")}`}>All Staff </Link>
 								</li>
-								<li><a href="edit-staff.html"> Edit Staff </a></li>
+								<li><Link to={"/staff/add"} className={`${isLinkActive("/staff/add")}`}> Add Staff </Link></li>
 								{/* <li><a href="add-staff.html"> Add Staff </a></li> */}
 							</ul>
 						</li>
 						<li> <a href="pricing.html"><i className="far fa-money-bill-alt"></i> <span>Pricing</span></a> </li>
 						
-						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Employees </span> <span className="menu-arrow"></span></a>
+						{/* <li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Employees </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
 								<li><a href="employees.html">Employees List </a></li>
 								<li><a href="leaves.html">Leaves </a></li>
@@ -115,10 +115,10 @@ function Sidebar() {
 								<li><a href="expense-reports.html">Expense Report </a></li>
 								<li><a href="invoice-reports.html">Invoice Report </a></li>
 							</ul>
-						</li>
+						</li> */}
 						<li> <a href="settings.html"><i className="fas fa-cog"></i> <span>Settings</span></a> </li>
 						<li className="list-divider"></li>
-						<li className="menu-title mt-3"> <span>UI ELEMENTS</span> </li>
+						{/* <li className="menu-title mt-3"> <span>UI ELEMENTS</span> </li>
 						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-laptop"></i> <span> Components </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
 								<li><a href="uikit.html">UI Kit </a></li>
@@ -161,7 +161,7 @@ function Sidebar() {
 								<li><a href="">Level 1 </a></li>
 								<li><a href="">Level 2 </a></li>
 							</ul>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>
