@@ -34,8 +34,8 @@ function Header() {
     return (
 		<div className="header">
 			<div className="header-left">
-				<a href="index.html" className="logo"> <img src="assets/img/hotel_logo.png" width="50" height="70" alt="logo"/> <span className="logoclass">HOTEL</span> </a>
-				<a href="index.html" className="logo logo-small"> <img src="assets/img/hotel_logo.png" alt="Logo" width="30" height="30"/> </a>
+				<a href="index.html" className="logo"> <img src="assets_admin/img/hotel_logo.png" width="50" height="70" alt="logo"/> <span className="logoclass">HOTEL</span> </a>
+				<a href="index.html" className="logo logo-small"> <img src="assets_admin/img/hotel_logo.png" alt="Logo" width="30" height="30"/> </a>
 			</div>
 			<a href="#" id="toggle_btn"> <i className="fe fe-text-align-left"></i> </a>
 			<a className="mobile_btn" id="mobile_btn"> <i className="fas fa-bars"></i> </a>
