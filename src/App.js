@@ -12,6 +12,9 @@ import Rooms from './Pages/Rooms';
 import AddRooms from './Pages/Rooms/Add Rooms';
 import Staff from './Pages/Staff';
 import AddStaff from './Pages/Staff/Add Staff';
+import RoomCategory from './Pages/RoomCategory';
+import AddRoomCategory from './Pages/RoomCategory/Add RoomCategory';
+import ServiceList from './Pages/Service List';
 //import Protected from './components/protected';
 
 function App() {
@@ -26,6 +29,11 @@ function App() {
           <Route path="/booking/add" element={<AddBooking />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/customer/add" element={<AddCustomer />} />
+          <Route path="/customer/:id" element={<AddCustomer />} />
+          <Route path="/roomcategory" element={<RoomCategory />} />
+          <Route path="/roomcategory/add" element={<AddRoomCategory />} />
+          <Route path="/roomcategory/:id" element={<AddRoomCategory />} />
+          <Route path="/servicelist" element={<ServiceList />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/add" element={<AddRooms />} />
           <Route path="/staff" element={<Staff />} />

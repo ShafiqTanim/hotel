@@ -4,19 +4,19 @@ import AdminLayout from "../../layouts/AdminLayout";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-function Customer(){
+function RoomCategory(){
     const[data, setData]=useState([]);
     useEffect(() => {
         getDatas();
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/roomcategory/index`).then(function(response) {
             setData(response.data.data);
         });
     }
     const deleteData = (id) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response){
+        axios.delete(`${process.env.REACT_APP_API_URL}/roomcategory/${id}`).then(function(response){
             getDatas();
         });
     }
@@ -29,7 +29,7 @@ function Customer(){
 							<div className="row align-items-center">
 								<div className="col">
 									<div className="mt-5">
-										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/customer/add"} className="btn btn-primary float-right veiwbutton">Add Customers</Link> </div>
+										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/roomcategory/add"} className="btn btn-primary float-right veiwbutton">Add Room Category</Link> </div>
 								</div>
 							</div>
 						</div>
@@ -42,12 +42,9 @@ function Customer(){
 												<thead>
 													<tr>
 														<th>ID</th>
-														<th>Name</th>
-														<th>Email</th>
-														<th>Contact</th>
-														<th>Address</th>
-														<th>NID Number</th>
-														<th>Nationality</th>
+														<th>Catagory Name</th>
+														<th>Description</th>
+														<th>Price</th>
 														<th className="text-right">Actions</th>
 													</tr>
 												</thead>
@@ -55,14 +52,11 @@ function Customer(){
 													{data && data.map((d, key) =>
 														<tr key={d.id}>
 															<td >{d.id}</td>
-															<td >{d.name}</td>
-															<td>{d.email}</td>
-															<td>{d.contact}</td>
-															<td>{d.address}</td>
-															<td>{d.nid}</td>
-															<td>{d.nationality}</td>
+															<td >{d.category_name}</td>
+															<td>{d.description}</td>
+															<td>{d.price}</td>
 															<td>
-																<Link to={`/customer/${d.id}`} className='btn btn-info' >Edit</Link>
+																<Link to={`/roomcategory/${d.id}`} className='btn btn-info' >Edit</Link>
 																<button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
 															</td>
 														</tr>
@@ -92,4 +86,4 @@ function Customer(){
         </div>
     );
 }
-export default Customer;
+export default RoomCategory;

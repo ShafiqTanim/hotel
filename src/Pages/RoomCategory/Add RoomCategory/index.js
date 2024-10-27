@@ -5,13 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 
 
-function AddCustomer() {
-    const [inputs, setInputs] = useState({id:'',name:'',email:'',contact:'',address:'',nid:'', nationality:''});
+function AddRoomCategory() {
+    const [inputs, setInputs] = useState({id:'',category_name:'',description:'',price:''});
     const navigate=useNavigate();
     const {id} = useParams();
     
     function getDatas(){
-        axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/roomcategory/${id}`).then(function(response) {
             setInputs(response.data.data);
         });
     }
@@ -35,9 +35,9 @@ function AddCustomer() {
         try{
             let apiurl='';
             if(inputs.id!=''){
-                apiurl=`/customer/edit/${inputs.id}`;
+                apiurl=`/roomcategory/edit/${inputs.id}`;
             }else{
-                apiurl=`/customer/create`;
+                apiurl=`/roomcategory/create`;
             }
             
             let response= await axios({
@@ -46,7 +46,7 @@ function AddCustomer() {
                 url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                 data: inputs
             });
-            navigate('/customer')
+            navigate('/roomcategory')
         } 
         catch(e){
             console.log(e);
@@ -69,39 +69,21 @@ function AddCustomer() {
                             <div className="col-lg-12">
                                 <form action="#" onSubmit={handleSubmit}>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Name</label>
+                                        <label className="col-lg-3 col-form-label">Category Name</label>
                                         <div className="col-lg-9">
-                                        <input type="text" defaultValue={inputs.name} name="name" onChange={handleChange} className="form-control"/>
+                                        <input type="text" defaultValue={inputs.category_name} name="category_name" onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Email</label>
+                                        <label className="col-lg-3 col-form-label">Description</label>
                                         <div className="col-lg-9">
-                                        <input type="email" name="email" defaultValue={inputs.email} onChange={handleChange} className="form-control"/>
+                                        <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Contact</label>
+                                        <label className="col-lg-3 col-form-label">Price</label>
                                         <div className="col-lg-9">
-                                        <input type="tel" name="contact" defaultValue={inputs.contact} onChange={handleChange} className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Address</label>
-                                        <div className="col-lg-9">
-                                        <input type="text" name="address" defaultValue={inputs.address} onChange={handleChange} className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">NID Number</label>
-                                        <div className="col-lg-9">
-                                        <input type="text" name="nid" defaultValue={inputs.nid} onChange={handleChange} className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Nationality</label>
-                                        <div className="col-lg-9">
-                                        <input type="text" name="nationality" defaultValue={inputs.nationality} onChange={handleChange} className="form-control"/>
+                                        <input type="text" name="price" defaultValue={inputs.price} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="text-right">
@@ -117,4 +99,4 @@ function AddCustomer() {
     )
 }
 
-export default AddCustomer
+export default AddRoomCategory
