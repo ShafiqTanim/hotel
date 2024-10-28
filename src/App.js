@@ -14,7 +14,10 @@ import Staff from './Pages/Staff';
 import AddStaff from './Pages/Staff/Add Staff';
 import RoomCategory from './Pages/RoomCategory';
 import AddRoomCategory from './Pages/RoomCategory/Add RoomCategory';
-import ServiceList from './Pages/Service List';
+import ServiceList from './Pages/ServiceList';
+import AddServiceList from './Pages/ServiceList/Add ServiceList';
+import RoomList from './Pages/RoomList';
+import AddRoomList from './Pages/RoomList/Add RoomList';
 //import Protected from './components/protected';
 
 function App() {
@@ -34,6 +37,11 @@ function App() {
           <Route path="/roomcategory/add" element={<AddRoomCategory />} />
           <Route path="/roomcategory/:id" element={<AddRoomCategory />} />
           <Route path="/servicelist" element={<ServiceList />} />
+          <Route path="/servicelist/add" element={<AddServiceList />} />
+          <Route path="/servicelist/:id" element={<AddServiceList />} />
+          <Route path="/roomlist" element={<RoomList />} />
+          <Route path="/roomlist/add" element={<AddRoomList />} />
+          <Route path="/roomlist/:id" element={<AddRoomList />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/add" element={<AddRooms />} />
           <Route path="/staff" element={<Staff />} />

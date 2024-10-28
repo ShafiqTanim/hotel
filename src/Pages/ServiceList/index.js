@@ -29,7 +29,7 @@ function ServiceList(){
 							<div className="row align-items-center">
 								<div className="col">
 									<div className="mt-5">
-										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/servicelist/add"} className="btn btn-primary float-right veiwbutton">Add Room Category</Link> </div>
+										<h4 className="card-title float-left mt-2">Service List</h4> <Link to={"/servicelist/add"} className="btn btn-primary float-right veiwbutton">Add Service</Link> </div>
 								</div>
 							</div>
 						</div>
@@ -42,10 +42,10 @@ function ServiceList(){
 												<thead>
 													<tr>
 														<th>ID</th>
-														<th>Catagory Name</th>
+														<th>Service Name</th>
 														<th>Description</th>
 														<th>Price</th>
-														<th className="text-right">Actions</th>
+														<th className="text-left">Actions</th>
 													</tr>
 												</thead>
 												<tbody>

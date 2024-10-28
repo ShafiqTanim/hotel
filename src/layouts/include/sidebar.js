@@ -70,9 +70,19 @@ function Sidebar() {
                             <a href="#"><i className="fas fa-user"></i> <span> Service List </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class  d-none">
 								<li>
-									<Link to={"/servicelist"} className={`${isLinkActive("/servicelist")}`}>All Customer </Link>
+									<Link to={"/servicelist"} className={`${isLinkActive("/servicelist")}`}>All Service List </Link>
 								</li>
-								<li><Link to={"/servicelist/add"} className={`${isLinkActive("/servicelist/add")}`}>Add Customer </Link></li>
+								<li><Link to={"/servicelist/add"} className={`${isLinkActive("/servicelist/add")}`}>Add Service List </Link></li>
+								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
+							</ul>
+						</li>
+						<li className="submenu" onClick={activeMenu}>
+                            <a href="#"><i className="fas fa-user"></i> <span> Room List </span> <span className="menu-arrow"></span></a>
+							<ul className="submenu_class  d-none">
+								<li>
+									<Link to={"/roomlist"} className={`${isLinkActive("/roomlist")}`}>All Service List </Link>
+								</li>
+								<li><Link to={"/roomlist/add"} className={`${isLinkActive("/roomlist/add")}`}>Add Service List </Link></li>
 								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
 							</ul>
 						</li>
