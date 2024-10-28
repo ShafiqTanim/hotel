@@ -4,19 +4,19 @@ import AdminLayout from "../../layouts/AdminLayout";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
-function RoomList(){
+function Employee(){
     const[data, setData]=useState([]);
     useEffect(() => {
         getDatas();
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/roomlist/index`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/employee/index`).then(function(response) {
             setData(response.data.data);
         });
     }
     const deleteData = (id) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/roomlist/${id}`).then(function(response){
+        axios.delete(`${process.env.REACT_APP_API_URL}/employee/${id}`).then(function(response){
             getDatas();
         });
     }
@@ -29,7 +29,7 @@ function RoomList(){
 							<div className="row align-items-center">
 								<div className="col">
 									<div className="mt-5">
-										<h4 className="card-title float-left mt-2">Room List</h4> <Link to={"/roomlist/add"} className="btn btn-primary float-right veiwbutton">Add Room List</Link> </div>
+										<h4 className="card-title float-left mt-2">Employee</h4> <Link to={"/employee/add"} className="btn btn-primary float-right veiwbutton">Add Employee</Link> </div>
 								</div>
 							</div>
 						</div>
@@ -42,10 +42,13 @@ function RoomList(){
 												<thead>
 													<tr>
 														<th>ID</th>
-														<th>room number</th>
-														<th>room category</th>
-														<th>description</th>
-														<th>status</th>
+														<th>Name</th>
+														<th>Role</th>
+														<th>Contact</th>
+														<th>Email</th>
+														<th>Address</th>
+														<th>Nationality</th>
+														<th>Hire Date</th>
 														<th className="text-left">Actions</th>
 													</tr>
 												</thead>
@@ -53,12 +56,15 @@ function RoomList(){
 													{data && data.map((d, key) =>
 														<tr key={d.id}>
 															<td >{d.id}</td>
-															<td >{d.room_number}</td>
-															<td>{d.roomcategory?.category_name}</td>
-															<td>{d.description}</td>
-															<td>{d.status}</td>
+															<td >{d.name}</td>
+															<td>{d.role?.name}</td>
+															<td>{d.contact}</td>
+															<td>{d.email}</td>
+															<td>{d.address}</td>
+															<td>{d.nationality}</td>
+															<td>{d.hire_date}</td>
 															<td>
-																<Link to={`/roomlist/${d.id}`} className='btn btn-info' >Edit</Link>
+																<Link to={`/employee/${d.id}`} className='btn btn-info' >Edit</Link>
 																<button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
 															</td>
 														</tr>
@@ -88,4 +94,4 @@ function RoomList(){
         </div>
     );
 }
-export default RoomList;
+export default Employee;

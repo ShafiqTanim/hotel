@@ -29,7 +29,7 @@ function RoomCategory(){
 							<div className="row align-items-center">
 								<div className="col">
 									<div className="mt-5">
-										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/roomcategory/add"} className="btn btn-primary float-right veiwbutton">Add Room Category</Link> </div>
+										<h4 className="card-title float-left mt-2">Room Category</h4> <Link to={"/roomcategory/add"} className="btn btn-primary float-right veiwbutton">Add Room Category</Link> </div>
 								</div>
 							</div>
 						</div>

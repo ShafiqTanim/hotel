@@ -60,9 +60,9 @@ function Sidebar() {
                             <a href="#"><i className="fas fa-user"></i> <span> Room Category </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class  d-none">
 								<li>
-									<Link to={"/roomcategory"} className={`${isLinkActive("/roomcategory")}`}>All Customer </Link>
+									<Link to={"/roomcategory"} className={`${isLinkActive("/roomcategory")}`}>All Room Category </Link>
 								</li>
-								<li><Link to={"/roomcategory/add"} className={`${isLinkActive("/roomcategory/add")}`}>Add Customer </Link></li>
+								<li><Link to={"/roomcategory/add"} className={`${isLinkActive("/roomcategory/add")}`}>Add Room Category </Link></li>
 								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
 							</ul>
 						</li>
@@ -80,30 +80,40 @@ function Sidebar() {
                             <a href="#"><i className="fas fa-user"></i> <span> Room List </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class  d-none">
 								<li>
-									<Link to={"/roomlist"} className={`${isLinkActive("/roomlist")}`}>All Service List </Link>
+									<Link to={"/roomlist"} className={`${isLinkActive("/roomlist")}`}>All Room List </Link>
 								</li>
-								<li><Link to={"/roomlist/add"} className={`${isLinkActive("/roomlist/add")}`}>Add Service List </Link></li>
+								<li><Link to={"/roomlist/add"} className={`${isLinkActive("/roomlist/add")}`}>Add Room List </Link></li>
 								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
 							</ul>
 						</li>
-						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-key"></i> <span> Rooms </span> <span className="menu-arrow"></span></a>
+						<li className="submenu" onClick={activeMenu}>
+                            <a href="#"><i className="fas fa-user"></i> <span> Employee </span> <span className="menu-arrow"></span></a>
+							<ul className="submenu_class  d-none">
+								<li>
+									<Link to={"/employee"} className={`${isLinkActive("/employee")}`}>All Employee </Link>
+								</li>
+								<li><Link to={"/employee/add"} className={`${isLinkActive("/employee/add")}`}>Add Employee </Link></li>
+								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
+							</ul>
+						</li>
+						{/* <li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-key"></i> <span> Rooms </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
 								<li>
 									<Link to={"/rooms"} className={`${isLinkActive("/rooms")}`}>All Rooms </Link>
 								</li>
 								<li><Link to={"/rooms/add"} className={`${isLinkActive("/rooms/add")}`}> Add Rooms </Link></li>
-								{/* <li><a href="add-room.html"> Add Rooms </a></li> */}
+								{/* <li><a href="add-room.html"> Add Rooms </a></li>
 							</ul>
-						</li>
-						<li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Staff </span> <span className="menu-arrow"></span></a>
+						</li> */}
+						{/* <li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Staff </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
 								<li>
 									<Link to={"/staff"} className={`${isLinkActive("/staff")}`}>All Staff </Link>
 								</li>
 								<li><Link to={"/staff/add"} className={`${isLinkActive("/staff/add")}`}> Add Staff </Link></li>
-								{/* <li><a href="add-staff.html"> Add Staff </a></li> */}
+								{/* <li><a href="add-staff.html"> Add Staff </a></li>
 							</ul>
-						</li>
+						</li> */}
 						<li> <a href="pricing.html"><i className="far fa-money-bill-alt"></i> <span>Pricing</span></a> </li>
 						
 						{/* <li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-user"></i> <span> Employees </span> <span className="menu-arrow"></span></a>

@@ -10,14 +10,17 @@ import Customer from './Pages/Customer';
 import AddCustomer from './Pages/Customer/Add Customer';
 import Rooms from './Pages/Rooms';
 import AddRooms from './Pages/Rooms/Add Rooms';
-import Staff from './Pages/Staff';
-import AddStaff from './Pages/Staff/Add Staff';
+// import Staff from './Pages/Staff';
+// import AddStaff from './Pages/Staff/Add Staff';
 import RoomCategory from './Pages/RoomCategory';
 import AddRoomCategory from './Pages/RoomCategory/Add RoomCategory';
 import ServiceList from './Pages/ServiceList';
 import AddServiceList from './Pages/ServiceList/Add ServiceList';
 import RoomList from './Pages/RoomList';
 import AddRoomList from './Pages/RoomList/Add RoomList';
+import Employee from './Pages/Employee';
+import AddEmployee from './Pages/Employee/Add Employee';
+import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
 
 function App() {
@@ -44,8 +47,13 @@ function App() {
           <Route path="/roomlist/:id" element={<AddRoomList />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/add" element={<AddRooms />} />
-          <Route path="/staff" element={<Staff />} />
-          <Route path="/staff/add" element={<AddStaff />} />
+          <Route path="/employee" element={<Employee />} />
+          <Route path="/employee/add" element={<AddEmployee />} />
+          <Route path="/employee/:id" element={<AddEmployee />} />
+          <Route path="/rosterschedule/add" element={<AddRosterSchedule />} />
+
+          {/* <Route path="/staff" element={<Staff />} />
+          <Route path="/staff/add" element={<AddStaff />} /> */}
         </Routes>
       </BrowserRouter>
   );

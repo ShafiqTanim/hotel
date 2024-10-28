@@ -6,22 +6,22 @@ import axios from 'axios';
 // import axios from '../../../components/axios';
 
 
-function AddRoomList() {
+function AddEmployee() {
     const [inputs, setInputs] = useState({id:'',room_number:'',room_category_id:'',description:'',status:''});
-    const [roomcategory, setRoomCategory] = useState([]);
+    const [role, setRole] = useState([]);
     const navigate=useNavigate();
     const {id} = useParams();
     
     function getDatas(){
-        axios.get(`${process.env.REACT_APP_API_URL}/roomlist/${id}`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/employee/${id}`).then(function(response) {
             setInputs(response.data.data);
         });
     }
 
     const getRelational = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/roomcategory/index`);
-            setRoomCategory(response.data.data);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/role/index`);
+            setRole(response.data.data);
         } catch (error) {
             console.error("Error fetching room categories:", error);
         }
@@ -51,9 +51,9 @@ function AddRoomList() {
         try{
             let apiurl='';
             if(inputs.id!=''){
-                apiurl=`/roomlist/edit/${inputs.id}`;
+                apiurl=`/employee/edit/${inputs.id}`;
             }else{
-                apiurl=`/roomlist/create`;
+                apiurl=`/employee/create`;
             }
             
             let response= await axios({
@@ -62,7 +62,7 @@ function AddRoomList() {
                 url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                 data: inputs
             });
-            navigate('/roomlist')
+            navigate('/employee')
         } 
         catch(e){
             console.log(e);
@@ -77,7 +77,7 @@ function AddRoomList() {
                         <div className="page-header">
                             <div className="row align-items-center">
                                 <div className="col">
-                                    <h3 className="page-title mt-5">Add Room List</h3>
+                                    <h3 className="page-title mt-5">Add Employee</h3>
                                 </div>
                             </div>
                         </div>
@@ -85,19 +85,19 @@ function AddRoomList() {
                             <div className="col-lg-12">
                                 <form action="#" onSubmit={handleSubmit}>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Room Number</label>
+                                        <label className="col-lg-3 col-form-label">Name</label>
                                         <div className="col-lg-9">
-                                        <input type="text" defaultValue={inputs.room_number} name="room_number" onChange={handleChange} className="form-control"/>
+                                        <input type="text" defaultValue={inputs.name} name="name" onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Room Category</label>
+                                        <label className="col-lg-3 col-form-label">Role</label>
                                         <div className="col-lg-9">
-                                        {roomcategory.length > 0 && 
-                                            <select className="form-control" id="room_category_id" name='room_category_id' defaultValue={inputs.room_category_id} onChange={handleChange}>
-                                                <option value="">Select Catagory</option>
-                                                {roomcategory.map((d, key) =>
-                                                    <option value={d.id}>{d.category_name}</option>
+                                        {role.length > 0 && 
+                                            <select className="form-control" id="role_id" name='role_id' defaultValue={inputs.role_id} onChange={handleChange}>
+                                                <option value="">Select Role</option>
+                                                {role.map((d, key) =>
+                                                    <option value={d.id}>{d.name}</option>
                                                 )}
                                             </select>
                                         }
@@ -105,15 +105,33 @@ function AddRoomList() {
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">description</label>
+                                        <label className="col-lg-3 col-form-label">contact</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
+                                        <input type="text" name="contact" defaultValue={inputs.contact} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">status</label>
+                                        <label className="col-lg-3 col-form-label">email</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/>
+                                        <input type="text" name="email" defaultValue={inputs.email} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">address</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="address" defaultValue={inputs.address} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">nationality</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="nationality" defaultValue={inputs.nationality} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">hire_date</label>
+                                        <div className="col-lg-9">
+                                        <input type="date" name="hire_date" defaultValue={inputs.hire_date} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="text-right">
@@ -129,4 +147,4 @@ function AddRoomList() {
     )
 }
 
-export default AddRoomList
+export default AddEmployee
