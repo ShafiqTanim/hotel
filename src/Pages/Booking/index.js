@@ -2,103 +2,35 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import AdminLayout from '../../layouts/AdminLayout';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 function Booking() {
 	const [Booking, setBooking] = useState([]);
+	const [RoomCategory, setRoomCategory] = useState([]);
 	useEffect(() => {
 		getDatas();
 	}, []);
 	function getDatas(){
-		axios.get('http://localhost/hotel/booking/index_booking.php').then(function(response){
+		axios.get(`${process.env.REACT_APP_API_URL}/booking/index`).then(function(response){
 			setBooking(response.data.data);
 			console.log(response.data.data)
 		});
+		axios.get(`${process.env.REACT_APP_API_URL}/roomcategory/index`).then(function(response){
+			setRoomCategory(response.data.data);
+			console.log(response.data.data)
+		});
 	}
+	const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/booking/${id}`).then(function(response){
+            getDatas();
+        });
+    }
     return (
         <div className="App">
           <AdminLayout>
 			<div className="page-wrapper">
 				<div className="content container-fluid">
-					{/* <div className="page-header">
-						<div className="row">
-							<div className="col-sm-12 mt-5">
-								<h3 className="page-title mt-3">Good Morning Soeng Souy!</h3>
-								<ul className="breadcrumb">
-									<li className="breadcrumb-item active">Booking</li>
-								</ul>
-							</div>
-						</div>
-					</div> */}
-					<div className="row">
-						{/* <div className="col-xl-3 col-sm-6 col-12">
-							<div className="card board1 fill">
-								<div className="card-body">
-									<div className="dash-widget-header">
-										<div>
-											<h3 className="card_widget_header">236</h3>
-											<h6 className="text-muted">Total Booking</h6> </div>
-										<div className="ml-auto mt-md-3 mt-lg-0"> <span className="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewox="0 0 24 24" fill="none" stroke="#009688" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user-plus">
-										<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-										<circle cx="8.5" cy="7" r="4"></circle>
-										<line x1="20" y1="8" x2="20" y2="14"></line>
-										<line x1="23" y1="11" x2="17" y2="11"></line>
-										</svg></span> </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-3 col-sm-6 col-12">
-							<div className="card board1 fill">
-								<div className="card-body">
-									<div className="dash-widget-header">
-										<div>
-											<h3 className="card_widget_header">180</h3>
-											<h6 className="text-muted">Available Rooms</h6> </div>
-										<div className="ml-auto mt-md-3 mt-lg-0"> <span className="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-dollar-sign">
-										<line x1="12" y1="1" x2="12" y2="23"></line>
-										<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-										</svg></span> </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-3 col-sm-6 col-12">
-							<div className="card board1 fill">
-								<div className="card-body">
-									<div className="dash-widget-header">
-										<div>
-											<h3 className="card_widget_header">1538</h3>
-											<h6 className="text-muted">Enquiry</h6> </div>
-										<div className="ml-auto mt-md-3 mt-lg-0"> <span className="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-file-plus">
-										<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
-										</path>
-										<polyline points="14 2 14 8 20 8"></polyline>
-										<line x1="12" y1="18" x2="12" y2="12"></line>
-										<line x1="9" y1="15" x2="15" y2="15"></line>
-										</svg></span> </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-3 col-sm-6 col-12">
-							<div className="card board1 fill">
-								<div className="card-body">
-									<div className="dash-widget-header">
-										<div>
-											<h3 className="card_widget_header">364</h3>
-											<h6 className="text-muted">Collections</h6> </div>
-										<div className="ml-auto mt-md-3 mt-lg-0"> <span className="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-globe">
-										<circle cx="12" cy="12" r="10"></circle>
-										<line x1="2" y1="12" x2="22" y2="12"></line>
-										<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-										</path>
-										</svg></span> </div>
-									</div>
-								</div>
-							</div>
-						</div> */}
-					</div>
 					<div className="row">
 						<div className="col-md-12 col-lg-6">
 							<div className="card card-chart">
@@ -133,19 +65,39 @@ function Booking() {
 												<tr>
 													<th>SL#</th>
 													<th>Name</th>
-													<th>Registration no</th>
-													<th>Vehicle Type</th>
+													<th>Room List</th>
+													<th>Contact No</th>
+													<th>Check In</th>
+													<th>Check Out</th>
+													<th>Guest Adult</th>
+													<th>Guest Child</th>
+													<th>Total</th>
+													<th>Discount</th>
+													<th>VAT</th>
 													<th>Status</th>
+													<th>Cancel Reason</th>
 												</tr>
 											</thead>
 											<tbody>
 												{Booking.map((d) =>
 													<tr key = {d.id}>
 														<td>{d.id}</td>
-														<td>{d.name}</td>
-														<td>{d.registration_no}</td>
-														<td>{d.vehicle_type}</td>
-														<td>{d.created_by}</td>
+														<td>{d.customerid?.name}</td>
+														<td>{d.roomlistid?.room_number}</td>
+														<td>{d.contact_no}</td>
+														<td>{d.check_in_date}</td>
+														<td>{d.check_out_date}</td>
+														<td>{d.number_of_guest_adult}</td>
+														<td>{d.number_of_guest_child}</td>
+														<td>{d.total_amount}</td>
+														<td>{d.discount}</td>
+														<td>{d.vat}</td>
+														<td>{d.status}</td>
+														<td>{d.cancel_reason}</td>
+														<td>
+															<Link to={`/booking/${d.id}`} className='btn btn-info' >Edit</Link>
+															<button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+														</td>
 													</tr>
 												)}
 											</tbody>

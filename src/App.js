@@ -20,7 +20,7 @@ import RoomList from './Pages/RoomList';
 import AddRoomList from './Pages/RoomList/Add RoomList';
 import Employee from './Pages/Employee';
 import AddEmployee from './Pages/Employee/Add Employee';
-import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
+// import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
           <Route path="/employee" element={<Employee />} />
           <Route path="/employee/add" element={<AddEmployee />} />
           <Route path="/employee/:id" element={<AddEmployee />} />
-          <Route path="/rosterschedule/add" element={<AddRosterSchedule />} />
+          {/* <Route path="/rosterschedule/add" element={<AddRosterSchedule />} /> */}
 
           {/* <Route path="/staff" element={<Staff />} />
           <Route path="/staff/add" element={<AddStaff />} /> */}

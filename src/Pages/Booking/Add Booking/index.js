@@ -1,138 +1,200 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import AdminLayout from '../../../layouts/AdminLayout';
-import axios from "axios";
-
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+// import axios from '../../../components/axios';
 
 function AddBooking() {
-  return (
-    <div className="App">
-        <AdminLayout>
-            <div class="page-wrapper">
-                <div class="content container-fluid">
-                    <div class="page-header">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="page-title mt-5">Add Booking</h3>
+    const [inputs, setInputs] = useState({id:'',customer_id:'',room_list_id:'',contact_no:'',check_in_date:'',check_out_date:'',number_of_guest_adult:'',number_of_guest_child:'',total_amount:'',discount:'',vat:'',status:'',status:''});
+    const [customerid, setCustomerid] = useState([]);
+    const [roomlistid, setRoomlistid] = useState([]);
+    const navigate=useNavigate();
+    const {id} = useParams();
+    
+    function getDatas(){
+        axios.get(`${process.env.REACT_APP_API_URL}/booking/${id}`).then(function(response) {
+            setInputs(response.data.data);
+        });
+    }
+
+    const getRelational = async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/customer/index`);
+            setCustomerid(response.data.data);
+        } 
+        catch (error) {
+            console.error("Error fetching room categories:", error);
+        }
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/roomlist/index`);
+            setRoomlistid(response.data.data);
+        } 
+        catch (error) {
+            console.error("Error fetching room categories:", error);
+        }
+    }
+
+    // const getRelational = async (e) => {
+    //     let roles = await axios.get(`/roomcategory/index`)
+    //     setRoomCategory(roles.data.data);
+    // }
+
+    useEffect(() => {
+        if(id){
+            getDatas();
+        }getRelational()
+    }, []);
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}));
+    }
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        console.log(inputs)
+        
+        try{
+            let apiurl='';
+            if(inputs.id!=''){
+                apiurl=`/booking/edit/${inputs.id}`;
+            }else{
+                apiurl=`/booking/create`;
+            }
+            
+            let response= await axios({
+                method: 'post',
+                responsiveTYpe: 'json',
+                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                data: inputs
+            });
+            navigate('/booking')
+        } 
+        catch(e){
+            console.log(e);
+        }
+    }
+    
+    return (
+        <div className="App">
+            <AdminLayout>
+                <div className="page-wrapper">
+                    <div className="content container-fluid">
+                        <div className="page-header">
+                            <div className="row align-items-center">
+                                <div className="col">
+                                    <h3 className="page-title mt-5">Add Booking</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <form action="#" onSubmit={handleSubmit}>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Customer</label>
+                                        <div className="col-lg-9">
+                                        {customerid.length > 0 && 
+                                            <select className="form-control" name='customer_id' defaultValue={inputs.customer_id} onChange={handleChange}>
+                                                <option value="">Select Catagory</option>
+                                                {customerid.map((d, key) =>
+                                                    <option value={d.id}>{d.name}</option>
+                                                )}
+                                            </select>
+                                        }
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Room Category</label>
+                                        <div className="col-lg-9">
+                                        {roomlistid.length > 0 && 
+                                            <select className="form-control" name='room_list_id' defaultValue={inputs.room_list_id} onChange={handleChange}>
+                                                <option value="">Select Catagory</option>
+                                                {roomlistid.map((d, key) =>
+                                                    <option value={d.id}>{d.room_number}</option>
+                                                )}
+                                            </select>
+                                        }
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Contact No</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="contact_no" defaultValue={inputs.contact_no} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Check In</label>
+                                        <div className="col-lg-9">
+                                        <input type="date" name="check_in_date" defaultValue={inputs.check_in_date} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Check Out</label>
+                                        <div className="col-lg-9">
+                                        <input type="date" name="check_out_date" defaultValue={inputs.check_out_date} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Guest Adult</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="number_of_guest_adult" defaultValue={inputs.number_of_guest_adult} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">description</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Guest Child</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="number_of_guest_child" defaultValue={inputs.number_of_guest_child} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Total Amount</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="total_amount" defaultValue={inputs.total_amount} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Discount</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="discount" defaultValue={inputs.discount} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Vat</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="vat" defaultValue={inputs.vat} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">status</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row">
+                                        <label className="col-lg-3 col-form-label">Cancel Reason</label>
+                                        <div className="col-lg-9">
+                                        <input type="text" name="cancel_reason" defaultValue={inputs.cancel_reason} onChange={handleChange} className="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <button type="submit" className="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form>
-                                <div class="row formtype">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Booking ID</label>
-                                            <input class="form-control" type="text" value="BKG-0001"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <select class="form-control" id="sel1" name="sellist1">
-                                                <option>Select</option>
-                                                <option>Jennifer Robinson</option>
-                                                <option>Terry Baker</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Room Type</label>
-                                            <select class="form-control" id="sel2" name="sellist1">
-                                                <option>Select</option>
-                                                <option>Single</option>
-                                                <option>Double</option>
-                                                <option>Quad</option>
-                                                <option>King</option>
-                                                <option>Suite</option>
-                                                <option>Villa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Total Members</label>
-                                            <select class="form-control" id="sel3" name="sellist1">
-                                                <option>Select</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <div class="cal-icon">
-                                                <input type="text" class="form-control datetimepicker"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Time</label>
-                                            <div class="time-icon">
-                                                <input type="text" class="form-control" id="datetimepicker3"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Arrival Date</label>
-                                            <div class="cal-icon">
-                                                <input type="text" class="form-control datetimepicker"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Depature Date</label>
-                                            <div class="cal-icon">
-                                                <input type="text" class="form-control datetimepicker"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Email ID</label>
-                                            <input type="text" class="form-control" id="usr"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Phone Number</label>
-                                            <input type="text" class="form-control" id="usr1"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>File Upload</label>
-                                            <div class="custom-file mb-3">
-                                                <input type="file" class="custom-file-input" id="customFile" name="filename"/>
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Message</label>
-                                            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-primary buttonedit">Save</button>
                 </div>
-            </div>
-        </AdminLayout>
-    </div>
-  )
+            </AdminLayout>
+        </div>
+    )
 }
 
 export default AddBooking
