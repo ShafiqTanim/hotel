@@ -20,6 +20,8 @@ import RoomList from './Pages/RoomList';
 import AddRoomList from './Pages/RoomList/Add RoomList';
 import Employee from './Pages/Employee';
 import AddEmployee from './Pages/Employee/Add Employee';
+import AddMenuCategory from './Pages/MenuCategory/Add MenuCategory';
+import MenuCategory from './Pages/MenuCategory';
 // import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
 
@@ -33,6 +35,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/booking/add" element={<AddBooking />} />
+          <Route path="/booking/:id" element={<AddBooking />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/customer/add" element={<AddCustomer />} />
           <Route path="/customer/:id" element={<AddCustomer />} />
@@ -51,9 +54,11 @@ function App() {
           <Route path="/employee/add" element={<AddEmployee />} />
           <Route path="/employee/:id" element={<AddEmployee />} />
           {/* <Route path="/rosterschedule/add" element={<AddRosterSchedule />} /> */}
-
           {/* <Route path="/staff" element={<Staff />} />
           <Route path="/staff/add" element={<AddStaff />} /> */}
+          <Route path="/menucategory" element={<MenuCategory />} />
+          <Route path="/menucategory/add" element={<AddMenuCategory />} />
+          <Route path="/menucategory/:id" element={<AddMenuCategory />} />
         </Routes>
       </BrowserRouter>
   );

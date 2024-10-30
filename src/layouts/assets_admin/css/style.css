@@ -9,3 +9,11 @@
 .showStyle{
     position: absolute; transform: translate3d(-106px, 60px, 0px); top: 0px; left: 0px; will-change: transform;
 }
+
+.table-description {
+    max-height: 50px; /* Adjust this value as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line; /* Respect line breaks */
+    display: block; /* Make sure the cell behaves like a block element */
+}
