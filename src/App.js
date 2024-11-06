@@ -22,6 +22,7 @@ import Employee from './Pages/Employee';
 import AddEmployee from './Pages/Employee/Add Employee';
 import AddMenuCategory from './Pages/MenuCategory/Add MenuCategory';
 import MenuCategory from './Pages/MenuCategory';
+import AddMenuItem from './Pages/MenuItem/Add MenuItem';
 // import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
 
@@ -59,6 +60,9 @@ function App() {
           <Route path="/menucategory" element={<MenuCategory />} />
           <Route path="/menucategory/add" element={<AddMenuCategory />} />
           <Route path="/menucategory/:id" element={<AddMenuCategory />} />
+
+          <Route path="/menuitem/add" element={<AddMenuItem />} />
+          <Route path="/menuitem/:id" element={<AddMenuItem />} />
         </Routes>
       </BrowserRouter>
   );

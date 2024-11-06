@@ -106,6 +106,16 @@ function Sidebar() {
 								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
 							</ul>
 						</li>
+						<li className="submenu" onClick={activeMenu}>
+                            <a href="#"><i className="fas fa-user"></i> <span> Menu Item </span> <span className="menu-arrow"></span></a>
+							<ul className="submenu_class  d-none">
+								<li>
+									<Link to={"/menuitem"} className={`${isLinkActive("/menuitem")}`}>All Menu Item </Link>
+								</li>
+								<li><Link to={"/menuitem/add"} className={`${isLinkActive("/menuitem/add")}`}>Add Menu Item </Link></li>
+								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
+							</ul>
+						</li>
 						{/* <li className="submenu" onClick={activeMenu}> <a href="#"><i className="fas fa-key"></i> <span> Rooms </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class d-none">
 								<li>
