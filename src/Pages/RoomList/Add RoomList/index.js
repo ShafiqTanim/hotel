@@ -104,16 +104,48 @@ function AddRoomList() {
                                         {/* <input type="text" name="room_category_id" defaultValue={inputs.room_category_id} onChange={handleChange} className="form-control"/> */}
                                         </div>
                                     </div>
-                                    <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">description</label>
+                                    {/* <div className="form-group row">
+                                        {/* <label className="col-lg-3 col-form-label">Description</label>
                                         <div className="col-lg-9">
                                         <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
+                                       
+                                        </div> */}
+                                         {/* {roomcategory ?
+                                            <>{roomcategory.find(data => data.id == roomcategory)?.description}</>
+                                            :
+                                            <select className="form-control" name='description' defaultValue={inputs.description} onChange={handleChange}>
+                                                <option value="">Select Patient</option>
+                                                {roomcategory.map((roomcategory) => (
+                                                    <option key={roomcategory.id} defaultValue={roomcategory.id}>{roomcategory.description}</option>
+                                                ))}
+                                            </select>
+                                        } */}
+                                        {/* <div>
+                                       
+                                        {/* <label> Price</label>
+                                        {roomcategory ?
+                                            <>{roomcategory.price}</>
+                                            :
+                                            // <select className="form-control" name='description' defaultValue={inputs.description} onChange={handleChange}>
+                                            //     <option value="">Select Patient</option>
+                                            //     {roomcategory.map((roomcategory) => (
+                                            //         <option key={roomcategory.id} defaultValue={roomcategory.id}>{roomcategory.description}</option>
+                                            //     ))}
+                                            // </select>
+                                            //<input type="text" name="price" defaultValue={inputs.price} onChange={handleChange} className="form-control"/>
+                                        }
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">status</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/>
+                                            <select className="form-control" id="status" name='status' defaultValue={inputs.status} onChange={handleChange}>
+                                                <option value="">Select Catagory</option>
+                                                <option value="0">Available</option>
+                                                <option value="1">Booked</option>
+                                                <option value="2">Maintanance</option>
+                                            </select>
+                                        {/* <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/> */}
                                         </div>
                                     </div>
                                     <div className="text-right">

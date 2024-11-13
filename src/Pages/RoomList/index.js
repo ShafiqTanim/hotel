@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 function RoomList(){
     const[data, setData]=useState([]);
+	const statusdata= ['Available','Booked','Maintenance'];
     useEffect(() => {
         getDatas();
     }, []);
@@ -45,6 +46,7 @@ function RoomList(){
 														<th>room number</th>
 														<th>room category</th>
 														<th>description</th>
+														<th>price</th>
 														<th>status</th>
 														<th className="text-left">Actions</th>
 													</tr>
@@ -55,8 +57,9 @@ function RoomList(){
 															<td >{d.id}</td>
 															<td >{d.room_number}</td>
 															<td>{d.roomcategory?.category_name}</td>
-															<td>{d.description}</td>
-															<td>{d.status}</td>
+															<td>{d.roomcategory?.description}</td>
+															<td>{d.roomcategory?.price}</td>
+															<td>{statusdata[d.status]}</td>
 															<td>
 																<Link to={`/roomlist/${d.id}`} className='btn btn-info' >Edit</Link>
 																<button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
