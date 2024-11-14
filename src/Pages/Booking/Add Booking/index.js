@@ -76,6 +76,19 @@ function AddBooking() {
             console.log(e);
         }
     }
+
+    const mapStatusToText = (status) => {
+        switch (status) {
+            case 0:
+                return 'Available';
+            case 1:
+                return 'Booked';
+            case 2:
+                return 'Maintenance';
+            default:
+                return 'Unknown';
+        }
+    }
     
     return (
         <div className="App">
@@ -95,93 +108,101 @@ function AddBooking() {
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Customer</label>
                                         <div className="col-lg-9">
-                                        {customerid.length > 0 && 
-                                            <select className="form-control" name='customer_id' defaultValue={inputs.customer_id} onChange={handleChange}>
-                                                <option value="">Select Catagory</option>
-                                                {customerid.map((d, key) =>
-                                                    <option value={d.id}>{d.name}</option>
-                                                )}
-                                            </select>
-                                        }
+                                            {customerid.length > 0 && 
+                                                <select className="form-control" name='customer_id' defaultValue={inputs.customer_id} onChange={handleChange}>
+                                                    <option value="">Select Customer</option>
+                                                    {customerid.map((d, key) =>
+                                                        <option value={d.id}>{d.name}</option>
+                                                    )}
+                                                </select>
+                                            }
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">Room Category</label>
+                                        <label className="col-lg-3 col-form-label">Room Nunber</label>
                                         <div className="col-lg-9">
-                                        {roomlistid.length > 0 && 
-                                            <select className="form-control" name='room_list_id' defaultValue={inputs.room_list_id} onChange={handleChange}>
-                                                <option value="">Select Catagory</option>
-                                                {roomlistid.map((d, key) =>
-                                                    <option value={d.id}>{d.room_number}</option>
-                                                )}
-                                            </select>
-                                        }
+                                            {roomlistid.length > 0 && (
+                                                <select className="form-control" name='room_list_id' defaultValue={inputs.room_list_id} onChange={handleChange}>
+                                                    <option value="">Select Room</option>
+                                                    {roomlistid.map((room, key) => {
+                                                        const roomStatusText = mapStatusToText(room.status);
+                                                        const isDisabled = room.status === 1 || room.status === 2;  // Booked or Maintenance
+                                                        return (
+                                                            <option 
+                                                                key={key} 
+                                                                value={room.id} 
+                                                                disabled={isDisabled}
+                                                                style={{
+                                                                    cursor: isDisabled ? 'not-allowed' : 'pointer',  // Change cursor style when disabled
+                                                                    color: isDisabled ? 'red' : 'black'  // Optional: Change text color to gray for disabled rooms
+                                                                }}
+                                                            >
+                                                                {room.room_number} - {roomStatusText}
+                                                            </option>
+                                                        );
+                                                    })}
+                                                </select>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Contact No</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="contact_no" defaultValue={inputs.contact_no} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="contact_no" defaultValue={inputs.contact_no} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Check In</label>
                                         <div className="col-lg-9">
-                                        <input type="date" name="check_in_date" defaultValue={inputs.check_in_date} onChange={handleChange} className="form-control"/>
+                                            <input type="date" name="check_in_date" defaultValue={inputs.check_in_date} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Check Out</label>
                                         <div className="col-lg-9">
-                                        <input type="date" name="check_out_date" defaultValue={inputs.check_out_date} onChange={handleChange} className="form-control"/>
+                                            <input type="date" name="check_out_date" defaultValue={inputs.check_out_date} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Guest Adult</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="number_of_guest_adult" defaultValue={inputs.number_of_guest_adult} onChange={handleChange} className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row">
-                                        <label className="col-lg-3 col-form-label">description</label>
-                                        <div className="col-lg-9">
-                                        <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="number_of_guest_adult" defaultValue={inputs.number_of_guest_adult} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Guest Child</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="number_of_guest_child" defaultValue={inputs.number_of_guest_child} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="number_of_guest_child" defaultValue={inputs.number_of_guest_child} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Total Amount</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="total_amount" defaultValue={inputs.total_amount} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="total_amount" defaultValue={inputs.total_amount} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Discount</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="discount" defaultValue={inputs.discount} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="discount" defaultValue={inputs.discount} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Vat</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="vat" defaultValue={inputs.vat} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="vat" defaultValue={inputs.vat} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">status</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="status" defaultValue={inputs.status} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="form-group row">
                                         <label className="col-lg-3 col-form-label">Cancel Reason</label>
                                         <div className="col-lg-9">
-                                        <input type="text" name="cancel_reason" defaultValue={inputs.cancel_reason} onChange={handleChange} className="form-control"/>
+                                            <input type="text" name="cancel_reason" defaultValue={inputs.cancel_reason} onChange={handleChange} className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="text-right">

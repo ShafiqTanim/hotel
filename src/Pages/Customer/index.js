@@ -29,7 +29,8 @@ function Customer(){
 							<div className="row align-items-center">
 								<div className="col">
 									<div className="mt-5">
-										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/customer/add"} className="btn btn-primary float-right veiwbutton">Add Customers</Link> </div>
+										<h4 className="card-title float-left mt-2">Customers</h4> <Link to={"/customer/add"} className="btn btn-primary float-right veiwbutton">Add Customers</Link>
+									</div>
 								</div>
 							</div>
 						</div>

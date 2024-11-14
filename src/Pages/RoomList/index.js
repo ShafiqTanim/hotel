@@ -42,7 +42,6 @@ function RoomList(){
 											<table className="datatable table table-stripped table table-hover table-center mb-0">
 												<thead>
 													<tr>
-														<th>ID</th>
 														<th>room number</th>
 														<th>room category</th>
 														<th>description</th>
@@ -54,7 +53,6 @@ function RoomList(){
 												<tbody>
 													{data && data.map((d, key) =>
 														<tr key={d.id}>
-															<td >{d.id}</td>
 															<td >{d.room_number}</td>
 															<td>{d.roomcategory?.category_name}</td>
 															<td>{d.roomcategory?.description}</td>

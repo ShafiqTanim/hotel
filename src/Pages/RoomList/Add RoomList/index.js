@@ -105,12 +105,12 @@ function AddRoomList() {
                                         </div>
                                     </div>
                                     {/* <div className="form-group row">
-                                        {/* <label className="col-lg-3 col-form-label">Description</label>
+                                        <label className="col-lg-3 col-form-label">Description</label>
                                         <div className="col-lg-9">
                                         <input type="text" name="description" defaultValue={inputs.description} onChange={handleChange} className="form-control"/>
                                        
-                                        </div> */}
-                                         {/* {roomcategory ?
+                                        </div>
+                                          {roomcategory ?
                                             <>{roomcategory.find(data => data.id == roomcategory)?.description}</>
                                             :
                                             <select className="form-control" name='description' defaultValue={inputs.description} onChange={handleChange}>

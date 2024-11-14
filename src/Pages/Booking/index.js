@@ -31,36 +31,21 @@ function Booking() {
           <AdminLayout>
 			<div className="page-wrapper">
 				<div className="content container-fluid">
-					<div className="row">
-						<div className="col-md-12 col-lg-6">
-							<div className="card card-chart">
-								<div className="card-header">
-									<h4 className="card-title">VISITORS</h4> </div>
-								<div className="card-body">
-									<div id="line-chart"></div>
-								</div>
-							</div>
-						</div>
-						<div className="col-md-12 col-lg-6">
-							<div className="card card-chart">
-								<div className="card-header">
-									<h4 className="card-title">ROOMS BOOKED</h4> </div>
-								<div className="card-body">
-									<div id="donut-chart"></div>
+					<div className="page-header">
+						<div className="row align-items-center">
+							<div className="col">
+								<div className="mt-5">
+									<h4 className="card-title float-left mt-2">Booking</h4><Link to={"/booking/add"} className="btn btn-primary float-right veiwbutton">Add Booking</Link>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="row">
-						<div className="col-md-12 d-flex">
-							<div className="card card-table flex-fill">
-								<div className="card-header">
-									<h4 className="card-title float-left mt-2">Booking</h4>
-									<button type="button" className="btn btn-primary float-right veiwbutton">Veiw All</button>
-								</div>
-								<div className="card-body">
+						<div className="col-md-12">
+							<div className="card card-table">
+								<div className="card-body booking_card">
 									<div className="table-responsive">
-										<table className="table table-hover table-center">
+										<table className="datatable table table-stripped table table-hover table-center mb-0">
 											<thead>
 												<tr>
 													<th>SL#</th>
