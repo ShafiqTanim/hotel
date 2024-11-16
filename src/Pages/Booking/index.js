@@ -57,8 +57,8 @@ function Booking() {
 													<th>Guest Adult</th>
 													<th>Guest Child</th>
 													<th>Total</th>
-													<th>Discount</th>
-													<th>VAT</th>
+													<th>Discount %</th>
+													<th>VAT %</th>
 													<th>Status</th>
 													<th>Cancel Reason</th>
 												</tr>
