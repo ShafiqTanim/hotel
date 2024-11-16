@@ -21,6 +21,19 @@ function RoomList(){
             getDatas();
         });
     }
+
+	const updateRoomStatus = async (roomId, status) => {
+		try {
+			// Update room status to 'Booked'
+			await axios.put(`${process.env.REACT_APP_API_URL}/roomlist/${roomId}`, {
+				status: status // Update status (0 = Available, 1 = Booked, 2 = Maintenance)
+			});
+			getDatas(); // Refresh the room list after updating status
+		} catch (error) {
+			console.error("Error updating room status", error);
+		}
+	};
+
     return(
         <div className="App">
             <AdminLayout>

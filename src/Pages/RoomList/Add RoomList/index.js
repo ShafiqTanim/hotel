@@ -44,30 +44,59 @@ function AddRoomList() {
         setInputs(values => ({...values, [name]: value}));
     }
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        console.log(inputs)
+    // const handleSubmit = async(e) => {
+    //     e.preventDefault();
+    //     console.log(inputs)
         
-        try{
-            let apiurl='';
-            if(inputs.id!=''){
-                apiurl=`/roomlist/edit/${inputs.id}`;
-            }else{
-                apiurl=`/roomlist/create`;
-            }
+    //     try{
+    //         let apiurl='';
+    //         if(inputs.id!=''){
+    //             apiurl=`/roomlist/edit/${inputs.id}`;
+    //         }else{
+    //             apiurl=`/roomlist/create`;
+    //         }
             
-            let response= await axios({
-                method: 'post',
-                responsiveTYpe: 'json',
+    //         let response= await axios({
+    //             method: 'post',
+    //             responsiveTYpe: 'json',
+    //             url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+    //             data: inputs
+    //         });
+    //         navigate('/roomlist')
+    //     } 
+    //     catch(e){
+    //         console.log(e);
+    //     }
+    // }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(inputs);
+        
+        try {
+            let apiurl = '';
+            if (inputs.id !== '') {
+                // If the room ID exists, use PUT request to update the room
+                apiurl = `/roomlist/edit/${inputs.id}`;
+            } else {
+                // Otherwise, use POST request to create a new room
+                apiurl = `/roomlist/create`;
+            }
+    
+            // Use PUT for updating existing rooms
+            let response = await axios({
+                method: inputs.id ? 'put' : 'post', // Use 'put' for update, 'post' for create
                 url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                data: inputs
+                data: inputs,
             });
-            navigate('/roomlist')
-        } 
-        catch(e){
+    
+            navigate('/roomlist');
+        } catch (e) {
             console.log(e);
         }
-    }
+    };
+    
+
     
     return (
         <div className="App">
