@@ -77,6 +77,16 @@ function Sidebar() {
 							</ul>
 						</li>
 						<li className="submenu" onClick={activeMenu}>
+                            <a href="#"><i className="fas fa-user"></i> <span> Service Bill </span> <span className="menu-arrow"></span></a>
+							<ul className="submenu_class  d-none">
+								<li>
+									<Link to={"/servicebill"} className={`${isLinkActive("/servicebill")}`}>All Service Bill </Link>
+								</li>
+								<li><Link to={"/servicebill/add"} className={`${isLinkActive("/servicebill/add")}`}>Add Service Bill </Link></li>
+								{/* <li><a href="add-roomcategory.html"> Add Room Category </a></li> */}
+							</ul>
+						</li>
+						<li className="submenu" onClick={activeMenu}>
                             <a href="#"><i className="fas fa-user"></i> <span> Room List </span> <span className="menu-arrow"></span></a>
 							<ul className="submenu_class  d-none">
 								<li>
