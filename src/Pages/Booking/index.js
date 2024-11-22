@@ -61,6 +61,7 @@ function Booking() {
 													<th>VAT %</th>
 													<th>Status</th>
 													<th>Cancel Reason</th>
+													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>

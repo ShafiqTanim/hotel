@@ -26,6 +26,7 @@ import MenuItem from './Pages/MenuItem';
 import AddMenuItem from './Pages/MenuItem/Add MenuItem';
 import AddMenuItemMenuCategory from './Pages/MenuItemMenuCategory/Add MenuItemMenuCategory';
 import MenuItemMenuCategory from './Pages/MenuItemMenuCategory';
+import ServiceBill from './Pages/ServiceBill';
 import AddServiceBill from './Pages/ServiceBill/Add ServiceBill';
 // import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
@@ -50,6 +51,7 @@ function App() {
           <Route path="/servicelist" element={<ServiceList />} />
           <Route path="/servicelist/add" element={<AddServiceList />} />
           <Route path="/servicelist/:id" element={<AddServiceList />} />
+          <Route path="/servicebill" element={<ServiceBill />} />
           <Route path="/servicebill/:id" element={<AddServiceBill />} />
           <Route path="/servicebill/add" element={<AddServiceBill />} />
           <Route path="/roomlist" element={<RoomList />} />
