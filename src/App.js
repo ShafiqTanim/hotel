@@ -28,7 +28,8 @@ import AddMenuItemMenuCategory from './Pages/MenuItemMenuCategory/Add MenuItemMe
 import MenuItemMenuCategory from './Pages/MenuItemMenuCategory';
 import ServiceBill from './Pages/ServiceBill';
 import AddServiceBill from './Pages/ServiceBill/Add ServiceBill';
-// import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
+import RosterSchedule from './Pages/RosterSchedule';
+import AddRosterSchedule from './Pages/RosterSchedule/Add RosterSchedule';
 //import Protected from './components/protected';
 
 function App() {
@@ -62,7 +63,8 @@ function App() {
           <Route path="/employee" element={<Employee />} />
           <Route path="/employee/add" element={<AddEmployee />} />
           <Route path="/employee/:id" element={<AddEmployee />} />
-          {/* <Route path="/rosterschedule/add" element={<AddRosterSchedule />} /> */}
+          <Route path="/rosterschedule" element={<RosterSchedule />} />
+          <Route path="/rosterschedule/add" element={<AddRosterSchedule />} />
           {/* <Route path="/staff" element={<Staff />} />
           <Route path="/staff/add" element={<AddStaff />} /> */}
           <Route path="/menucategory" element={<MenuCategory />} />
